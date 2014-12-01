@@ -1,0 +1,25 @@
+<h1>{{ city.countryName }}</h1>
+  <p>
+  Population of Country = <strong>{{ country.population | number:0}}</strong>
+  </p>
+  <p>
+  Area = <strong>{{ country.areaInSqKm | number:0 }}</strong>
+  </p>
+  <p>
+  Capital = <strong>{{ city.name }}</strong>
+  </p>
+  <p>
+  Population of Capital = <strong>{{ city.population | number:0}}</strong>
+  </p>
+  Neighbors:
+  <ul >
+    <li ng-repeat="neighbor in neighbors" ng-if="$index < 3" fade="fade">
+        <a class="cac-a" ng-href="#!/countries/{{ neighbor.countryCode}}">{{ neighbor.countryName }}</a>
+    </li>
+  </ul>
+  <div>
+  <img class="cac-image" ng-src="http://www.geonames.org/img/country/250/{{country.countryCode.toUpperCase()}}.png" />
+  <img class="cac-image" ng-src="http://www.geonames.org/flags/x/{{country.countryCode.toLowerCase()}}.gif" />
+  </div>
+<a class="cac-a" href="#!/">Home</a>
+<a class="cac-a" href="#!/countries">Browse Countries</a>

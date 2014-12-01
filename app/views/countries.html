@@ -1,0 +1,29 @@
+
+<div class="container row">
+<!-- filter each search result -->
+<input type="text" class="cac-searcher" placeholder="Filter US Cities" ng-model="search" />
+
+  <div class="six columns">
+  	<table class="cac-table">
+  	<tr>
+  		<th>Name</th><th>Country Code</th><th>Capital</th><th>Area in Sq KM</th><th>Continent</th>
+  	</tr>
+    <tr ng-repeat="country in countries | filter:search" fade="fade">
+   
+      		<td>
+        	<a class="cac-a" ng-href="#!/countries/{{ country.countryCode }}">{{ country.countryName }}</a>
+      		</td>
+      		<td>{{country.countryCode}}</td>
+      		<td>{{country.capital}}</td>
+      		<td>{{country.areaInSqKm | number:0}}</td>
+      		<td>{{country.continentName}}</td>
+   
+    </tr>
+    <table>
+    <a class="cac-a" href="#!/">Home</a>
+  </div>
+
+</div>
+
+ <a ng-href="#!/cities/{{ city }}">{{ city }}</a>
+      </h2>
