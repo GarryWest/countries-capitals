@@ -2,8 +2,11 @@
 <div class="container row">
 <!-- filter each search result -->
 <input type="text" class="cac-searcher" placeholder="Filter US Cities" ng-model="search" />
+  <div ng-if="loading" class="fade">
+    Searching for countries...
+  </div>
 
-  <div class="six columns">
+  <div ng-if="!loading" class="fade six columns">
   	<table class="cac-table">
   	<tr>
   		<th>Name</th><th>Country Code</th><th>Capital</th><th>Area in Sq KM</th><th>Continent</th>

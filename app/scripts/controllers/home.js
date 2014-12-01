@@ -5,10 +5,6 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-viewsModule.controller('HomeCtrl', ['$scope', 'cacCountries', 
-                            function($scope,   cacCountries ) {
-  cacCountries().then(function(countries) {
-  	$scope.countries = [];
-    $scope.countries = countries;
-   });
+viewsModule.controller('HomeCtrl', [function(){
+
 }]);

@@ -5,11 +5,12 @@ viewsModule.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-viewsModule.controller('CountriesCtrl', ['$rootScope', 'cacCountries',
-                            function($rootScope,   cacCountries ) {
- 
+viewsModule.controller('CountriesCtrl', ['$scope', '$rootScope', 'cacCountries',
+                            function($scope, $rootScope,   cacCountries ) {
+$scope.loading = true; 
   cacCountries().then(function(countries) {
     $rootScope.countries = countries;
+    $scope.loading = false;
    });
 
 }])
