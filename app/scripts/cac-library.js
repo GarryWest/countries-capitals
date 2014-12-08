@@ -23,14 +23,16 @@ angular.module('cacLibrary', [])
 
   .factory('cacRequest', ['$http', '$q', 'CAC_API_PREFIX', 'CAC_API_SUFFIX', 
                   function($http,   $q,   CAC_API_PREFIX, CAC_API_SUFFIX) {
-    return function(path) {
-      var defer = $q.defer();
-      $http.get(CAC_API_PREFIX + path + '&' + CAC_API_SUFFIX)
-        .success(function(data) {
-          defer.resolve(data.geonames);
-        })
-      return defer.promise;
-    }
+    return {
+      getData: function(path) {
+        var defer = $q.defer();
+        $http.get(CAC_API_PREFIX + path + '&' + CAC_API_SUFFIX)
+          .success(function(data) {
+            defer.resolve(data.geonames);
+          })
+        return defer.promise;
+      }
+    };
   }])
 
   .factory('cacFindCountry',    ['cacRequest', '$interpolate', 'CAC_SEARCH',
@@ -41,7 +43,7 @@ angular.module('cacLibrary', [])
         countryCode : q
       });
 
-      return cacRequest(path);
+      return cacRequest.getData(path);
     }
   }])
 
@@ -53,7 +55,7 @@ angular.module('cacLibrary', [])
         countryCode : q
       });
 
-      return cacRequest(path);
+      return cacRequest.getData(path);
     }
   }])
 
